@@ -7,7 +7,30 @@ const apiClient = axios.create({
 });
 
 export const inventoryApi = {
-  getAll: () => apiClient.get('/inventory'),
+  getAll: () => {
+    return Promise.resolve({
+      data: [
+        { 
+          id: 1, 
+          inventory_name: 'Офісне крісло', 
+          description: 'Ергономічне крісло з підтримкою спини', 
+          photoUrl: 'https://via.placeholder.com/150' 
+        },
+        { 
+          id: 2, 
+          inventory_name: 'Монітор Dell 27"', 
+          description: '4K монітор для роботи з графікою та кодом', 
+          photoUrl: 'https://via.placeholder.com/150' 
+        },
+        { 
+          id: 3, 
+          inventory_name: 'Механічна клавіатура', 
+          description: 'Клавіатура на синіх світчах', 
+          photoUrl: ''
+        }
+      ]
+    });
+  },
 
   getById: (id) => apiClient.get(`/inventory/${id}`),
 
