@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { inventoryApi } from '../services/inventoryApi';
+import ConfirmModal from '../components/inventory/ConfirmModal';
 
 export default function AdminInventory() {
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -26,7 +30,21 @@ export default function AdminInventory() {
   }, []);
 
   const handleDeleteClick = (id) => {
-    console.log("Клік по видаленню для ID:", id);
+    setItemToDelete(id);
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!itemToDelete) return;
+    
+    try {
+      await inventoryApi.delete(itemToDelete);
+      setInventory(prev => prev.filter(item => item.id !== itemToDelete));
+      console.log(`Елемент ${itemToDelete} видалено успішно`);
+    // eslint-disable-next-line no-unused-vars
+    } catch (err) {
+      alert('Не вдалося видалити елемент. Спробуйте ще раз.');
+    }
   };
 
   if (loading) {
@@ -113,6 +131,13 @@ export default function AdminInventory() {
           </table>
         </div>
       )}
+      <ConfirmModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmDelete}
+        title="Видалення інвентарю"
+        message="Ви дійсно хочете видалити цей товар зі складу?"
+      />
     </div>
   );
 }
