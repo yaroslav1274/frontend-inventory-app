@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { inventoryApi } from '../services/inventoryApi';
 import { useFavorites } from '../hooks/useFavorites';
 import InventoryCard from '../components/gallery/InventoryCard';
+import InventoryQuickView from '../components/gallery/InventoryQuickView';
 
 export default function Gallery() {
   const [inventory, setInventory] = useState([]);
@@ -72,6 +73,11 @@ export default function Gallery() {
           ))
         )}
       </div>
+      <InventoryQuickView 
+        isOpen={!!selectedItem} 
+        item={selectedItem} 
+        onClose={() => setSelectedItem(null)} 
+      />
     </div>
   );
 }
