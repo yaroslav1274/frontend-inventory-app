@@ -65,25 +65,19 @@ export default function AdminInventory() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-neutral-900 rounded-lg shadow-md border border-neutral-800 p-6">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-        <h1 className="text-2xl font-bold text-gray-800">Управління складом</h1>
+        <h1 className="text-2xl font-bold text-green-500">Управління складом</h1>
         <Link 
           to="/admin/create" 
-          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-md font-medium transition-colors shadow-sm"
+          className="bg-green-500 hover:bg-green-400 text-neutral-950 px-5 py-2.5 rounded-md font-bold transition-colors shadow-sm"
         >
           + Додати позицію
         </Link>
       </div>
 
-      {inventory.length === 0 ? (
-        <div className="text-center py-16 bg-gray-50 rounded-lg border border-dashed border-gray-300">
-          <p className="text-gray-500 mb-2">На складі поки немає інвентарю.</p>
-          <p className="text-sm text-gray-400">Натисніть «Додати позицію», щоб створити перший запис.</p>
-        </div>
-      ) : (
-        <InventoryTable inventory={inventory} onDeleteClick={handleDeleteClick} />
-      )}
+      <InventoryTable inventory={inventory} onDeleteClick={handleDeleteClick} />
+
       <ConfirmModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

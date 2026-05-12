@@ -6,7 +6,7 @@ import AdminInventoryDetails from './pages/AdminInventoryDetails';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen bg-neutral-950 text-neutral-300">
       <main className="container mx-auto px-4 py-8">
         <Routes>
           <Route path="/admin" element={<AdminInventory />} />

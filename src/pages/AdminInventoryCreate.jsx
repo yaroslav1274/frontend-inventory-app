@@ -31,10 +31,10 @@ export default function AdminInventoryCreate() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="max-w-2xl mx-auto bg-neutral-900 rounded-lg shadow-sm border border-neutral-800 p-6">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800">Додати нову позицію</h1>
-        <Link to="/admin" className="text-gray-500 hover:text-gray-700 transition-colors text-sm font-medium">
+        <Link to="/admin" className="text-neutral-400 hover:text-green-400 transition-colors text-sm font-medium">
           &larr; Назад до списку
         </Link>
       </div>
