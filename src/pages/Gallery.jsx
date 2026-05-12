@@ -11,8 +11,7 @@ export default function Gallery() {
   
   // eslint-disable-next-line no-unused-vars
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
-  
-  // eslint-disable-next-line no-unused-vars
+   
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
