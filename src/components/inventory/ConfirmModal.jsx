@@ -1,10 +1,3 @@
-/**
- * @param {boolean} isOpen
- * @param {function} onClose
- * @param {function} onConfirm
- * @param {string} title
- * @param {string} message
- */
 export default function ConfirmModal({ isOpen, onClose, onConfirm, title, message }) {
   if (!isOpen) return null;
 
